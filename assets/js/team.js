@@ -7,23 +7,23 @@ let teamFull = newUrl.searchParams.get("name");
 
 teamsDetails = JSON.parse(localStorage.getItem("teamArray"));
 playersDetails = JSON.parse(localStorage.getItem("playerArray"));
-var teamMainBox=document.getElementById("container_teams")
-var tableTeam=document.getElementById("table-team")
+var teamMainBox = document.getElementById("container_teams")
+var tableTeam = document.getElementById("table-team")
 
-var cnt=0;
+var cnt = 0;
 
-for(var i=0;i<playersDetails.length;i++){
-if(teamFull==playersDetails[i].from){
-  var isPlay=""
-  if(playersDetails[i].isPlaying==true){
-    isPlay="Playing"
-  }
-  else{
-    isPlay="On Bench"
-  }
-var currentP=playersDetails[i].playerName
-cnt++
-teamMainBox.innerHTML+=`
+for (var i = 0; i < playersDetails.length; i++) {
+  if (teamFull == playersDetails[i].from) {
+    var isPlay = ""
+    if (playersDetails[i].isPlaying == true) {
+      isPlay = "Playing"
+    }
+    else {
+      isPlay = "On Bench"
+    }
+    var currentP = playersDetails[i].playerName
+    cnt++
+    teamMainBox.innerHTML += `
 <div    onclick="makethisinclick('${currentP}')"    class="minibox mn2">
 <img src="${playersDetails[i].playerImg}" class="mainimage" alt=""/> 
 <div class="dataodcard">
@@ -36,35 +36,35 @@ teamMainBox.innerHTML+=`
 </div>
 </div>
 `}
-function makethisinclick(res){
-  window.open(`./pdetails.html?name=${res}`,"_self")
-}
+  function makethisinclick(res) {
+    window.open(`./pdetails.html?name=${res}`, "_self")
+  }
 
 }
 
 //top batsman
-var topBatsman=""
-for(var j=0;j<playersDetails.length;j++){
-  if(playersDetails[j].description=="Batsman"&&playersDetails[j].from==teamFull){
-   topBatsman=playersDetails[j].playerName
+var topBatsman = ""
+for (var j = 0; j < playersDetails.length; j++) {
+  if (playersDetails[j].description == "Batsman" && playersDetails[j].from == teamFull) {
+    topBatsman = playersDetails[j].playerName
 
-   break
+    break
   }
-  else{
-   topBatsman="No Player"
+  else {
+    topBatsman = "No Player"
   }
 }
 
 // top bowler
-var topBowler=""
-for(var j=0;j<playersDetails.length;j++){
-  if(playersDetails[j].description=="Bowler"&&playersDetails[j].from==teamFull){
-   topBowler=playersDetails[j].playerName
+var topBowler = ""
+for (var j = 0; j < playersDetails.length; j++) {
+  if (playersDetails[j].description == "Bowler" && playersDetails[j].from == teamFull) {
+    topBowler = playersDetails[j].playerName
 
-   break
+    break
   }
-  else{
-   topBowler="No Player"
+  else {
+    topBowler = "No Player"
   }
 }
 
@@ -72,11 +72,11 @@ for(var j=0;j<playersDetails.length;j++){
 //table
 
 console.log(cnt)
-teamsDetails.map((item)=>{
-  if(teamFull==item.sName){
+teamsDetails.map((item) => {
+  if (teamFull == item.sName) {
 
- 
- return tableTeam.innerHTML+=`
+
+    return tableTeam.innerHTML += `
  <table>
  <tr>
      <td>Team name</td>
@@ -104,6 +104,6 @@ teamsDetails.map((item)=>{
  </tr>
 </table>
 `
-}
+  }
 
 })

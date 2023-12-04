@@ -10,14 +10,14 @@ playersDetails = JSON.parse(localStorage.getItem("playerArray"));
 
 let playerData = document.getElementById("player-details-con");
 for (var i = 0; i < playersDetails.length; i++) {
-  if (playersDetails[i].playerName == playerUrl) {
-    var playingOrN = "";
-    if (playersDetails[i].isPlaying == true) {
-      playingOrN = "Playing";
-    } else {
-      playingOrN = "On Bench";
-    }
-    playerData.innerHTML += `
+    if (playersDetails[i].playerName == playerUrl) {
+        var playingOrN = "";
+        if (playersDetails[i].isPlaying == true) {
+            playingOrN = "Playing";
+        } else {
+            playingOrN = "On Bench";
+        }
+        playerData.innerHTML += `
         <div id="player_detail-img">
         <img src="${playersDetails[i].playerImg}" alt="">
     </div>
@@ -51,5 +51,5 @@ for (var i = 0; i < playersDetails.length; i++) {
     </div>
     
         `;
-  }
+    }
 }
